@@ -1,0 +1,42 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-title>Administrar Materias</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content class="ion-padding">
+
+  <!-- Add new subject -->
+  <ion-item>
+    <ion-label position="floating">Nombre de la materia</ion-label>
+    <ion-input [(ngModel)]="newSubject.name" placeholder=""></ion-input>
+  </ion-item>
+
+  <ion-item>
+    <ion-label position="floating">Descripción</ion-label>
+    <ion-input [(ngModel)]="newSubject.description" placeholder=""></ion-input>
+  </ion-item>
+
+  <ion-button expand="block" (click)="addSubject()">
+    Añadir materia
+  </ion-button>
+
+  <ion-list *ngIf="subjects.length > 0; else noSubjects">
+    <ion-item *ngFor="let subject of subjects">
+      <ion-label>
+        <h2>{{ subject.name }}</h2>
+        <p *ngIf="subject.description">{{ subject.description }}</p>
+      </ion-label>
+      <ion-button color="danger" fill="outline" (click)="deleteSubject(subject.id)">
+        Eliminar
+      </ion-button>
+    </ion-item>
+  </ion-list>
+
+  <ng-template #noSubjects>
+    <p class="ion-text-center ion-margin-top">
+      No hay materias registradas aún.
+    </p>
+  </ng-template>
+
+</ion-content>

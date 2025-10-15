@@ -1,0 +1,77 @@
+<ion-header>
+  <ion-toolbar color="medium">
+    <ion-title class="ion-text-center">
+      Registrar Notas
+    </ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content class="ion-padding">
+
+  <div class="nota-container">
+
+    <ion-card class="form-card">
+      <ion-card-header>
+        <ion-card-title>Asignar Nota</ion-card-title>
+      </ion-card-header>
+
+      <ion-card-content>
+
+        <!-- Selección de estudiante -->
+        <ion-item>
+          <ion-label>Estudiante</ion-label>
+          <ion-select
+            placeholder="Seleccione un estudiante"
+            [(ngModel)]="estudianteSeleccionado"
+          >
+            <ion-select-option *ngFor="let est of estudiantes" [value]="est">
+              {{ est }}
+            </ion-select-option>
+          </ion-select>
+        </ion-item>
+
+        <!-- Selección de materia -->
+        <ion-item>
+          <ion-label>Materia</ion-label>
+          <ion-select
+            placeholder="Seleccione una materia"
+            [(ngModel)]="materiaSeleccionada"
+          >
+            <ion-select-option *ngFor="let mat of materias" [value]="mat">
+              {{ mat }}
+            </ion-select-option>
+          </ion-select>
+        </ion-item>
+
+        <!-- Ingreso de nota -->
+        <ion-item>
+          <ion-label position="floating">Nota</ion-label>
+          <ion-input
+            type="number"
+            [(ngModel)]="nota"
+            min="0"
+            max="5"
+            step="0.1"
+            placeholder="Ingrese nota (0.0 a 5.0)"
+          ></ion-input>
+        </ion-item>
+
+        <!-- Botón guardar -->
+        <ion-button expand="block" color="primary" (click)="guardarNota()">
+          Guardar Nota
+        </ion-button>
+
+      </ion-card-content>
+    </ion-card>
+
+  </div>
+
+</ion-content>
+
+<ion-footer>
+  <ion-toolbar color="medium">
+    <ion-title class="ion-text-center" size="small">
+      Electiva - Seguridad Informática - Guillermo Campo, Daniel Zambrano, Juan Pardo, Santiago Ramirez - 2025
+    </ion-title>
+  </ion-toolbar>
+</ion-footer>

@@ -1,0 +1,64 @@
+<ion-header>
+  <ion-toolbar color="medium">
+    <ion-title class="ion-text-center">
+      Panel del Estudiante
+    </ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content class="ion-padding">
+
+  <div class="estudiante-container">
+
+    <!-- Datos del estudiante -->
+    <ion-card class="info-card">
+      <ion-card-header>
+        <ion-card-title>Datos del Estudiante</ion-card-title>
+      </ion-card-header>
+      <ion-card-content>
+        <p><strong>Nombre:</strong> {{ nombre }}</p>
+        <p><strong>Código:</strong> {{ codigo }}</p>
+        <p><strong>Correo:</strong> {{ correo }}</p>
+        <p><strong>Promedio general:</strong> {{ promedioGeneral }}</p>
+      </ion-card-content>
+    </ion-card>
+
+    <!-- Tabla de notas -->
+    <ion-card class="notas-card">
+      <ion-card-header>
+        <ion-card-title>Notas por Materia</ion-card-title>
+      </ion-card-header>
+      <ion-card-content>
+        <ion-grid>
+          <ion-row class="header-row">
+            <ion-col><strong>Materia</strong></ion-col>
+            <ion-col><strong>Nota</strong></ion-col>
+            <ion-col><strong>Fecha</strong></ion-col>
+            <ion-col><strong>Estado</strong></ion-col>
+          </ion-row>
+
+          <ion-row *ngFor="let nota of notas">
+            <ion-col>{{ nota.materia }}</ion-col>
+            <ion-col>{{ nota.valor }}</ion-col>
+            <ion-col>{{ nota.fecha }}</ion-col>
+            <ion-col>
+              <ion-badge [color]="nota.valor >= 3 ? 'success' : 'danger'">
+                {{ nota.valor >= 3 ? 'Aprobado' : 'Reprobado' }}
+              </ion-badge>
+            </ion-col>
+          </ion-row>
+        </ion-grid>
+      </ion-card-content>
+    </ion-card>
+
+  </div>
+
+</ion-content>
+
+<ion-footer>
+  <ion-toolbar color="medium">
+    <ion-title class="ion-text-center" size="small">
+      Electiva - Seguridad Informática - Guillermo Campo, Daniel Zambrano, Juan Pardo, Santiago Ramirez - 2025
+    </ion-title>
+  </ion-toolbar>
+</ion-footer>

@@ -1,0 +1,45 @@
+.registro-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  height: 100%;
+  gap: 20px;
+  padding: 20px;
+}
+
+.input-item {
+  width: 80%;
+  border-radius: 20px;
+  --background: #2e9ec1;
+  color: white;
+}
+
+.rol-section {
+  width: 80%;
+  background: #a9a9a9;
+  border-radius: 10px;
+  padding: 10px;
+  text-align: center;
+}
+
+h3 {
+  margin-bottom: 10px;
+  font-weight: bold;
+  color: black;
+}
+
+ion-button {
+  width: 80%;
+  border-radius: 30px;
+}
+
+Log-button {
+  width: 80%;
+  border-radius: 30px;
+}
+
+ion-footer {
+  text-align: center;
+  font-size: 0.8em;
+}

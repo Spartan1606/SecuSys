@@ -1,0 +1,51 @@
+<ion-header>
+  <ion-toolbar color="medium">
+    <ion-title class="ion-text-center">
+      Iniciar Sesión - Sistema Notas
+    </ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content class="ion-padding">
+
+  <div class="login-container">
+
+    <ion-item class="input-item">
+      <ion-input
+        placeholder="Ingrese su usuario"
+        [(ngModel)]="usuario"
+        type="text"
+        label="Usuario"
+        labelPlacement="floating"
+      ></ion-input>
+    </ion-item>
+
+    <ion-item class="input-item">
+      <ion-input
+        placeholder="Ingrese su contraseña"
+        [(ngModel)]="contrasena"
+        type="password"
+        label="Contraseña"
+        labelPlacement="floating"
+      ></ion-input>
+    </ion-item>
+
+    <ion-button expand="block" color="primary" (click)="iniciarSesion()">
+      Login
+    </ion-button>
+
+    <ion-button expand="block" fill="outline" color="medium" (click)="goToRegister()">
+      Crear cuenta
+    </ion-button>
+
+  </div>
+
+</ion-content>
+
+<ion-footer>
+  <ion-toolbar color="medium">
+    <ion-title class="ion-text-center" size="small">
+      Electiva - Seguridad Informática - Guillermo Campo, Daniel Zambrano, Juan Pardo, Santiago Ramirez - 2025
+    </ion-title>
+  </ion-toolbar>
+</ion-footer>

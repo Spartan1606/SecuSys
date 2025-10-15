@@ -1,0 +1,7 @@
+{
+  "name": "Parcial2-Notas",
+  "integrations": {
+    "capacitor": {}
+  },
+  "type": "angular-standalone"
+}

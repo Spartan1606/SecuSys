@@ -1,0 +1,45 @@
+.estudiante-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: flex-start;
+  gap: 20px;
+  padding: 10px;
+}
+
+ion-card {
+  width: 90%;
+  border-radius: 15px;
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+}
+
+.info-card {
+  background: #d9e8f2;
+}
+
+.notas-card {
+  background: #ffffff;
+}
+
+.header-row {
+  background: #2e9ec1;
+  color: white;
+  border-radius: 5px;
+  padding: 5px 0;
+}
+
+ion-badge {
+  font-size: 0.9em;
+}
+
+.info-card p,
+.info-card ion-card-title {
+  color: #003366; /* Azul oscuro */
+}
+
+.notas-card ion-card-title,
+.notas-card ion-col {
+  color: #00264d; /* Azul más oscuro para las notas */
+}
+
+

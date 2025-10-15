@@ -1,0 +1,66 @@
+<ion-header>
+  <ion-toolbar color="medium">
+    <ion-title class="ion-text-center">
+      Panel del Docente
+    </ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content class="ion-padding">
+
+  <div class="docente-container">
+
+    <!-- Datos del docente -->
+    <ion-card class="info-card">
+      <ion-card-header>
+        <ion-card-title>Datos del Docente</ion-card-title>
+      </ion-card-header>
+      <ion-card-content>
+        <p><strong>Nombre:</strong> {{ nombre }}</p>
+        <p><strong>Correo:</strong> {{ correo }}</p>
+        <p><strong>Materias Asignadas:</strong></p>
+        <ul>
+          <li *ngFor="let materia of materias">{{ materia }}</li>
+        </ul>
+      </ion-card-content>
+    </ion-card>
+
+    <!-- Lista de estudiantes y notas -->
+    <ion-card class="notas-card">
+      <ion-card-header>
+        <ion-card-title>Estudiantes y Notas</ion-card-title>
+      </ion-card-header>
+      <ion-card-content>
+        <ion-grid>
+          <ion-row class="header-row">
+            <ion-col><strong>Estudiante</strong></ion-col>
+            <ion-col><strong>Materia</strong></ion-col>
+            <ion-col><strong>Nota</strong></ion-col>
+            <ion-col><strong>Acción</strong></ion-col>
+          </ion-row>
+
+          <ion-row *ngFor="let registro of registros">
+            <ion-col>{{ registro.estudiante }}</ion-col>
+            <ion-col>{{ registro.materia }}</ion-col>
+            <ion-col>{{ registro.nota }}</ion-col>
+            <ion-col>
+              <ion-button color="primary" size="small" fill="outline">
+                Editar
+              </ion-button>
+            </ion-col>
+          </ion-row>
+        </ion-grid>
+      </ion-card-content>
+    </ion-card>
+
+  </div>
+
+</ion-content>
+
+<ion-footer>
+  <ion-toolbar color="medium">
+    <ion-title class="ion-text-center" size="small">
+      Electiva - Seguridad Informática - Guillermo Campo, Daniel Zambrano, Juan Pardo, Santiago Ramirez - 2025
+    </ion-title>
+  </ion-toolbar>
+</ion-footer>

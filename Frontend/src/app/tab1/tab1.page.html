@@ -1,0 +1,62 @@
+<ion-header>
+  <ion-toolbar color="medium">
+    <ion-title class="ion-text-center">
+      Registro - Sistema Notas
+    </ion-title>
+    <ion-buttons slot="end">
+      <ion-button color="primary" fill="solid" (click)="goToLogin()">
+        Login
+      </ion-button>
+    </ion-buttons>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content class="ion-padding">
+
+  <div class="registro-container">
+
+    <ion-item class="input-item">
+      <ion-input
+        placeholder="Escriba su usuario"
+        [(ngModel)]="usuario"
+        type="text"
+        label="Usuario"
+        labelPlacement="floating"
+      ></ion-input>
+    </ion-item>
+
+    <ion-item class="input-item">
+      <ion-input
+        placeholder="Contraseña"
+        [(ngModel)]="contrasena"
+        type="password"
+        label="Contraseña"
+        labelPlacement="floating"
+      ></ion-input>
+    </ion-item>
+
+    <div class="rol-section">
+      <h3>Escoja su rol</h3>
+      <ion-item>
+        <ion-select [(ngModel)]="rol" placeholder="Tipo">
+          <ion-select-option value="profesor">Profesor</ion-select-option>
+          <ion-select-option value="estudiante">Estudiante</ion-select-option>
+        </ion-select>
+      </ion-item>
+    </div>
+
+    <ion-button expand="block" color="danger" (click)="registrarUsuario()">
+      Registrarme
+    </ion-button>
+
+  </div>
+
+</ion-content>
+
+<ion-footer>
+  <ion-toolbar color="medium">
+    <ion-title class="ion-text-center" size="small">
+      Electiva - Seguridad Informática - Guillermo Campo, Daniel Zambrano, Juan Pardo, Santiago Ramirez - 2025
+    </ion-title>
+  </ion-toolbar>
+</ion-footer>
