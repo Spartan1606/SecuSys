@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, CUSTOM_ELEMENTS_SCHEMA } from '@angular/core';
 import { NavController, ToastController } from '@ionic/angular';
 import { IonicModule } from '@ionic/angular';
 import { CommonModule } from '@angular/common';
@@ -9,14 +9,20 @@ import { AuthService } from '../services/auth';
   selector: 'app-tab1',
   templateUrl: 'tab1.page.html',
   styleUrls: ['tab1.page.scss'],
-  imports: [IonicModule, CommonModule, FormsModule]
+  standalone: true,
+  imports: [IonicModule, CommonModule, FormsModule],
+  schemas: [CUSTOM_ELEMENTS_SCHEMA]
 })
 export class Tab1Page {
   usuario: string = '';
   contrasena: string = '';
   rol: string = '';
 
-  constructor(private navCtrl: NavController, private toastCtrl: ToastController, private authService: AuthService) {}
+  constructor(
+    private navCtrl: NavController,
+    private toastCtrl: ToastController,
+    private authService: AuthService
+  ) {}
 
   async registrarUsuario() {
     if (!this.usuario || !this.contrasena || !this.rol) {
@@ -29,72 +35,52 @@ export class Tab1Page {
       return;
     }
 
-    switch (this.rol){
-
+    switch (this.rol) {
       case 'profesor':
-        this.rol = 'teacher'
+        this.rol = 'teacher';
         break;
-      
       case 'estudiante':
-        this.rol = 'student'
+        this.rol = 'student';
         break;
-      
       default:
         break;
     }
 
-    // Aquí puedes enviar la información al backend con HttpClient
-    console.log('Usuario:', this.usuario);
-    console.log('Contraseña:', this.contrasena);
-    console.log('Rol:', this.rol);
-
     const userData = {
-
       name: this.usuario,
       password: this.contrasena,
       role: this.rol
-
     };
 
-    this.authService.register(userData).subscribe(
-      {
+    this.authService.register(userData).subscribe({
+      next: async (response) => {
+        console.log('Usuario registrado:', response);
 
-        next: async(response) => {
+        const toast = await this.toastCtrl.create({
+          message: 'Usuario registrado correctamente.',
+          duration: 2000,
+          color: 'success'
+        });
 
-          console.log('Usuario registrado: ', response);
+        await toast.present();
+        this.navCtrl.navigateForward('/tabs/tab2');
+      },
 
-          const toast = await this.toastCtrl.create({
+      error: async (err) => {
+        console.error('Error al registrar usuario:', err);
 
-            message: 'Usuario registrado correctamente.',
-            duration: 2000,
-            color: 'success'
+        const toast = await this.toastCtrl.create({
+          message: 'Error al registrar usuario',
+          duration: 2000,
+          color: 'danger'
+        });
 
-          });
-
-          this.navCtrl.navigateForward('/tabs/tab2');
-
-        },
-
-        error: async (err) => {
-
-          console.error('Error al registrar el usuario: ', err);
-
-          const toast = await this.toastCtrl.create({
-
-            message: 'Error al registrar el usuario', 
-            duration: 2000,
-            color: 'danger'
-
-          });
-
-        }
-
+        await toast.present();
       }
-    )
+    });
   }
 
   goToLogin() {
-    // Aquí puedes navegar al tab del login (por ejemplo tab2)
     this.navCtrl.navigateForward('/tabs/tab2');
   }
 }
